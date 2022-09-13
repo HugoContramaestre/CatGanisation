@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="snackbar_padding_top">24dp</dimen>
+    <dimen name="item_image_background_corner_radius">18dp</dimen>
+    <dimen name="item_image_dimen">80dp</dimen>
+    <dimen name="item_card_corner_radius">10dp</dimen>
+    <dimen name="item_padding_top">10dp</dimen>
+    <dimen name="item_padding_bottom">10dp</dimen>
+    <dimen name="item_padding_horizontal">20dp</dimen>
+    <dimen name="item_decoration_space">5dp</dimen>
+    <dimen name="item_elements_horizontal_margin">8dp</dimen>
+    <dimen name="item_elements_vertical_margin">10dp</dimen>
+    <dimen name="scrollview_inner_padding">20dp</dimen>
+    <dimen name="detail_image_dimension">150dp</dimen>
+    <dimen name="detail_margin_top_big">50dp</dimen>
+    <dimen name="detail_margin_top_normal">15dp</dimen>
+    <dimen name="detail_padding_horizontal">20dp</dimen>
+    <dimen name="separator_height">1dp</dimen>
+    <dimen name="login_margin_lat">30dp</dimen>
+    <dimen name="login_margin_normal">16dp</dimen>
+    <dimen name="login_margin_big">24dp</dimen>
+</resources>

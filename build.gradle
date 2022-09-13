@@ -1,0 +1,134 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = "1.6.21"
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.4.2"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+plugins {
+    id "com.github.ben-manes.versions" version "0.42.0"
+    id 'org.jetbrains.kotlin.jvm' version '1.6.21' apply false
+}
+
+allprojects {
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+
+    ext {
+        androidLibs = [
+                appcompat          : 'androidx.appcompat:appcompat:1.4.1',
+//                lifecycleExtensions : 'android.arch.lifecycle:extensions:1.1.1',
+                chromeTab          : 'androidx.browser:browser:1.4.0',
+                cardview           : 'androidx.cardview:cardview:1.0.0',
+                constraintlayout   : 'androidx.constraintlayout:constraintlayout:2.1.3',
+                androidxCore       : 'androidx.core:core-ktx:1.7.0',
+                dataStorePreference: 'androidx.datastore:datastore-preferences:1.0.0',
+                lifecycle          : 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1',
+                navigationFragment : 'androidx.navigation:navigation-fragment-ktx:2.4.2',
+                navigationUi       : 'androidx.navigation:navigation-ui-ktx:2.4.2',
+                paging             : 'androidx.paging:paging-runtime-ktx:3.1.1',
+                preferences        : 'androidx.preference:preference-ktx:1.2.0',
+                recyclerview       : 'androidx.recyclerview:recyclerview-selection:1.1.0',
+                swipe              : 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0',
+                viewPager          : 'androidx.viewpager2:viewpager2:1.0.0',
+                worker             : 'androidx.work:work-runtime-ktx:2.7.1',
+                material           : 'com.google.android.material:material:1.6.0',
+                skeletonView       : 'com.faltenreich:skeletonlayout:4.0.0',
+                glide              : 'com.github.bumptech.glide:glide:4.13.2',
+                glideOkHttp        : 'com.github.bumptech.glide:okhttp3-integration:4.13.2',
+                spinKit            : 'com.github.ybq:Android-SpinKit:1.4.0',
+                ucrop              : 'com.github.yalantis:ucrop:2.2.8',
+                flexbox            : 'com.google.android.flexbox:flexbox:3.0.0',
+                timber             : 'com.jakewharton.timber:timber:5.0.1',
+        ]
+
+        androidKaptLibs = [
+                glideCompiler: 'com.github.bumptech.glide:compiler:4.13.2'
+        ]
+
+        kotlinLibs = [
+                stdlib                : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+                coroutines            : 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1',
+        ]
+
+        libs = [
+                okhttp                  : 'com.squareup.okhttp3:okhttp:4.9.3',
+                okhttpLoginInterceptor  : 'com.squareup.okhttp3:logging-interceptor:4.9.3',
+                retrofit                : 'com.squareup.retrofit2:retrofit:2.9.0',
+                retrofitGsonConverter   : 'com.squareup.retrofit2:converter-gson:2.9.0',
+                retrofitScalarsConverter: 'com.squareup.retrofit2:converter-scalars:2.9.0',
+                networkAdapter          : 'com.github.haroldadmin:NetworkResponseAdapter:5.0.0',
+                koin                    : 'io.insert-koin:koin-android:3.1.4',
+        ]
+
+        testLibs = [
+                junit        : 'junit:junit:4.13.2',
+                mockitoKotlin: "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0",
+                mockitoInline: "org.mockito:mockito-inline:4.5.1",
+//                koinTest     : 'io.insert-koin:koin-test-junit4:3.0.1',
+                coreTesting  : 'androidx.arch.core:core-testing:2.1.0',
+                testShared   : project(':testShared')
+        ]
+
+        androidxTestLibs = [
+                archCoreTesting: 'android.arch.core:core-testing:1.1.1'
+        ]
+
+        androidTestLibs = [
+                testRunner   : 'androidx.test:runner:1.4.0',
+                espresso     : 'androidx.test.espresso:espresso-contrib:3.4.0',
+                coreTesting  : 'androidx.arch.core:core-testing:2.1.0',
+                rules        : 'androidx.test:rules:1.4.0',
+                extJunit     : 'androidx.test.ext:junit-ktx:1.1.3',
+//                koinTest     : 'io.insert-koin:koin-test-junit4:3.0.1',
+                mockWebServer: 'com.squareup.okhttp3:mockwebserver:4.9.3',
+                okhttpIdling : 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+//                fragmentTest :'androidx.fragment:fragment-testing:1.2.2'
+        ]
+
+        utilLibs = [
+                utilCode: 'com.blankj:utilcodex:1.31.0'
+        ]
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+def isNonStable = { String version ->
+    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> version.toUpperCase().contains(it) }
+    def regex = /^[0-9,.v-]+(-r)?$/
+    return !stableKeyword && !(version ==~ regex)
+}
+
+tasks.named("dependencyUpdates").configure {
+    checkForGradleUpdate = false
+    gradleReleaseChannel = "current"
+
+    resolutionStrategy {
+        componentSelection {
+            all {
+                if (isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)) {
+                    reject('Release candidate')
+                }
+            }
+        }
+    }
+}

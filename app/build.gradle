@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.task.catganisation"
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        devel {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationIdSuffix '.devel'
+            versionNameSuffix '.dev'
+            debuggable true
+            multiDexEnabled true
+        }
+    }
+    applicationVariants.all { variant ->
+        def name = variant.getName()
+
+        // Default values
+        variant.buildConfigField 'String', 'BASE_URL', '"https://api.thecatapi.com/v1/"'
+        variant.buildConfigField 'String', 'API_KEY', '"live_cqCKWrZkZmwxSFEsNo0Wqs3Y5rJ0Yv4umh0AF6phPjUJuhRLPLlxRYd5OjqhvGll"'
+
+
+        // Specific values
+        if (name.contains("release")) {
+            variant.buildConfigField 'String', 'BASE_URL', '"https://api.thecatapi.com/v1/"'
+        } else if (name.contains("stage")) {
+            variant.buildConfigField 'String', 'BASE_URL', '"https://api.thecatapi.com/v1/"'
+        }
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(":data")
+    implementation project(":domain")
+    implementation project(":usecases")
+
+    implementation androidLibs.values()
+    implementation kotlinLibs.values()
+    implementation libs.values()
+    kapt androidKaptLibs.values()
+    implementation utilLibs.values()
+    testImplementation testLibs.values()
+    testImplementation androidxTestLibs.values()
+    androidTestImplementation androidTestLibs.values()
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ItemText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">160dp</item>
+        <item name="android:layout_marginStart">@dimen/item_elements_horizontal_margin</item>
+    </style>
+
+    <style name="ItemText.Title">
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="ItemText.Subtitle">
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="ItemImage">
+        <item name="android:layout_width">@dimen/item_image_dimen</item>
+        <item name="android:layout_height">@dimen/item_image_dimen</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.ItemImage</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.ItemImage" parent="">
+        <item name="cornerSize">10%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.DetailImage" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="DetailText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/detail_padding_horizontal</item>
+        <item name="android:layout_marginEnd">@dimen/detail_padding_horizontal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DetailText.Title">
+        <item name="android:layout_marginTop">@dimen/detail_margin_top_big</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DetailText.Subtitle">
+        <item name="android:layout_marginTop">@dimen/detail_margin_top_normal</item>
+    </style>
+
+    <style name="ItemCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="cardCornerRadius">10dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+</resources>

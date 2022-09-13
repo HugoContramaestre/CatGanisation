@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingVertical="@dimen/scrollview_inner_padding"
+        android:background="@color/background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/detail_padding_horizontal">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image"
+                android:layout_width="@dimen/detail_image_dimension"
+                android:layout_height="@dimen/detail_image_dimension"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.DetailImage"
+                tools:src="@drawable/placeholder_avatar"
+                />
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/DetailText.Title"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+                app:layout_constraintTop_toBottomOf="@+id/image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Sonic"
+                />
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/DetailText.Subtitle"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                app:layout_constraintTop_toBottomOf="@+id/name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Sonic"
+                />
+
+            <TextView
+                android:id="@+id/country_code_label"
+                style="@style/DetailText.Subtitle"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintTop_toBottomOf="@+id/description"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/detail_country_code"
+                />
+
+            <TextView
+                android:id="@+id/country_code"
+                style="@style/DetailText.Subtitle"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintBottom_toBottomOf="@+id/country_code_label"
+                app:layout_constraintStart_toEndOf="@+id/country_code_label"
+                tools:text="Sonic"
+                />
+
+            <TextView
+                android:id="@+id/temperament_label"
+                style="@style/DetailText.Subtitle"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintTop_toBottomOf="@+id/country_code"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/detail_breed_temperament"
+                />
+
+            <TextView
+                android:id="@+id/temperament"
+                style="@style/DetailText.Subtitle"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintTop_toBottomOf="@+id/temperament_label"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Sonic"
+                />
+
+            <TextView
+                android:id="@+id/wikipedia_url_label"
+                style="@style/DetailText.Subtitle"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:layout_constraintTop_toBottomOf="@+id/temperament"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/detail_wiki_url"
+                />
+
+            <TextView
+                android:id="@+id/wikipedia_url"
+                style="@style/DetailText.Subtitle"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintTop_toBottomOf="@+id/wikipedia_url_label"
+                app:layout_constraintStart_toStartOf="parent"
+                android:autoLink="phone|web"
+                tools:text="Sonic"
+                />
+
+            <include
+                android:id="@+id/include_empty_list"
+                layout="@layout/include_empty_list"
+                android:visibility="gone"/>
+            <include
+                android:id="@+id/include_retry"
+                layout="@layout/include_retry_screen"
+                android:visibility="gone"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

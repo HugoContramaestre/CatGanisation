@@ -1,0 +1,6 @@
+rootProject.name = "CatGanisation"
+include ':app'
+include ':data'
+include ':usecases'
+include ':testShared'
+include ':domain'

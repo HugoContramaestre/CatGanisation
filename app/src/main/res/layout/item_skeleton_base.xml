@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.faltenreich.skeletonlayout.SkeletonLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/skeletonLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:maskColor="@color/skeleton"
+    app:shimmerColor="@color/skeleton_50"
+    app:shimmerDurationInMillis="1000"
+    app:shimmerAngle="45"
+    app:maskCornerRadius="@dimen/item_image_background_corner_radius"/>

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">CatApp</string>
+    <string name="error_connection">Connection Error</string>
+    <string name="error_unknown">Unknown Error</string>
+    <string name="error_unexpected">Unexpected Error</string>
+    <string name="common_empty_list">No data</string>
+    <string name="common_published">Published:</string>
+    <string name="common_retry">Retry</string>
+    <string name="common_breeds">Breeds</string>
+    <string name="common_breed_detail">Breed\'s detail</string>
+    <string name="common_query_hint">Search by country</string>
+    <string name="common_username">Username</string>
+    <string name="common_password">Password</string>
+    <string name="common_login">Login</string>
+    <string name="common_invalid_username">Invalid username</string>
+    <string name="common_invalid_password">Invalid password</string>
+    <string name="error_invalid_username">The username must have 3 alphanumeric characters at least</string>
+    <string name="error_invalid_password">The password must have 5 alphanumeric characters at least</string>
+    <string name="detail_country_code">Country\'s code:</string>
+    <string name="detail_breed_temperament">Breed\'s temperament:</string>
+    <string name="detail_wiki_url">Wikipedia url:</string>
+</resources>
